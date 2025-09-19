@@ -1,6 +1,6 @@
 # Count arguments docker action
 
-This action prints out the number of argumetnts passed in
+This action prints out the number of arguments passed in
 
 ## Inputs
 
