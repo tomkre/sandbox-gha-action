@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import * as github from '@actoins/github';
+import * as github from '@actions/github';
 
 try {
     const inputArgs = core.getInput('arguments-to-count');
