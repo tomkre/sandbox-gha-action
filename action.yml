@@ -8,17 +8,21 @@ inputs:
 outputs:
   arg-count:
     description: Count of arguments passed in
-    value: ${{ steps.return-result.outputs.num-args }}
+#    value: ${{ steps.return-result.outputs.num-args }}
 runs:
-  using: composite
-  steps:
-    - name: Print arguments if any
-      run: |
-        echo Arguments: ${{ inputs.arguments-to-count }}
-      shell: bash
-    - id: return-result
-      run: |
-        echo "path: ${{ github.action_path }}"
-        echo "count: `${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`"
-        echo "num-args=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
-      shell: bash
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.arguments-to-count }}
+#  using: composite
+#  steps:
+#    - name: Print arguments if any
+#      run: |
+#        echo Arguments: ${{ inputs.arguments-to-count }}
+#      shell: bash
+#    - id: return-result
+#      run: |
+#        echo "path: ${{ github.action_path }}"
+#        echo "count: `${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`"
+#        echo "num-args=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
+#      shell: bash
