@@ -10,11 +10,13 @@ outputs:
     description: Count of arguments passed in
 #    value: ${{ steps.return-result.outputs.num-args }}
 runs:
-  using: docker
+  using: 'node24'
+  main: actions.js
+#  using: docker
 #  image: Dockerfile
-  image: 'docker://quay.io/techupskills2/arg-count-action:1.0.1'
-  args:
-    - ${{ inputs.arguments-to-count }}
+#  image: 'docker://quay.io/techupskills2/arg-count-action:1.0.1'
+#  args:
+#    - ${{ inputs.arguments-to-count }}
 #  using: composite
 #  steps:
 #    - name: Print arguments if any
